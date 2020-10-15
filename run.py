@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 import time
+import urllib
 
 options = Options()
 options.add_argument("--disable-notifications")
@@ -29,9 +30,12 @@ time.sleep(1)
 
 for x in range(0, 4):
     browser.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-    time.sleep(2)
+    time.sleep(1)
 
-soup = BeautifulSoup(browser.page_source, 'html.parser')
-print(soup)
+content = BeautifulSoup(browser.page_source, 'html.parser')
+images = content.select(".prod_img > img")
+
+for image in images:
+    print(image['src'])
 
 browser.quit()
