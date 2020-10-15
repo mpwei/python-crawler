@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 import time
-import urllib
+from urllib.request import urlretrieve
 
 options = Options()
 options.add_argument("--disable-notifications")
@@ -36,6 +36,8 @@ content = BeautifulSoup(browser.page_source, 'html.parser')
 images = content.select(".prod_img > img")
 
 for image in images:
-    print(image['src'])
+    imgName = image['src'].split('/')[4]
+    print(imgName + ".jpg")
+    urlretrieve("https:" + image['src'], imgName + ".jpg")
 
 browser.quit()
