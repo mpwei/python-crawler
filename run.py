@@ -38,6 +38,6 @@ images = content.select(".prod_img > img")
 for image in images:
     imgName = image['src'].split('/')[4]
     print(imgName + ".jpg")
-    urlretrieve("https:" + image['src'], imgName + ".jpg")
+    urlretrieve("https:" + image['src'], "images/" + imgName + ".jpg")
 
 browser.quit()
