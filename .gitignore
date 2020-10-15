@@ -1,0 +1,15 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+node_modules/
+.idea/
+.vscode/
+.idea
+.log
+debug.log
